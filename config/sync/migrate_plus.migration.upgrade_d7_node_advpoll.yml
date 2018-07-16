@@ -1,0 +1,65 @@
+uuid: 5e41d308-928f-4399-a406-1776699ef617
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_advpoll
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Nodes (Advanced Poll)'
+source:
+  plugin: d7_node
+  node_type: advpoll
+process:
+  nid: tnid
+  vid: vid
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+  comment_node_advpoll/0/status: comment
+  body:
+    plugin: get
+    source: body
+  advpoll_choice: advpoll_choice
+  advpoll_max_choices:
+    plugin: get
+    source: advpoll_max_choices
+  advpoll_dates: advpoll_dates
+  advpoll_closed: advpoll_closed
+  advpoll_options: advpoll_options
+  advpoll_mode: advpoll_mode
+  advpoll_cookie_duration:
+    plugin: get
+    source: advpoll_cookie_duration
+  advpoll_results: advpoll_results
+  advpoll_behavior: advpoll_behavior
+  field_thanks:
+    plugin: get
+    source: field_thanks
+  field_vote_button_text:
+    plugin: get
+    source: field_vote_button_text
+destination:
+  plugin: 'entity:node'
+  default_bundle: advpoll
+migration_dependencies:
+  required:
+    - upgrade_d7_user
+    - upgrade_d7_node_type
+  optional:
+    - upgrade_d7_field_instance

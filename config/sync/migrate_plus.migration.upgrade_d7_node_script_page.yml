@@ -1,0 +1,53 @@
+uuid: 4f2b35df-0dc4-46c5-a12b-ec63603445ea
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_script_page
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Nodes (Script Page)'
+source:
+  plugin: d7_node
+  node_type: script_page
+process:
+  nid: tnid
+  vid: vid
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+  comment_node_script_page/0/status: comment
+  field_contact:
+    plugin: get
+    source: field_contact
+  field_embed_list: field_embed_list
+  field_intro_text:
+    plugin: get
+    source: field_intro_text
+  field_link: field_link
+  field_components: field_components
+  field_sidebar_components: field_sidebar_components
+destination:
+  plugin: 'entity:node'
+  default_bundle: script_page
+migration_dependencies:
+  required:
+    - upgrade_d7_user
+    - upgrade_d7_node_type
+  optional:
+    - upgrade_d7_field_instance

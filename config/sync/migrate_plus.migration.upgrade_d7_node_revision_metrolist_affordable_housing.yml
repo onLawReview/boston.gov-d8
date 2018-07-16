@@ -1,0 +1,99 @@
+uuid: 59b7f6d8-e2d5-46df-b958-5deeccb4f7cc
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_revision_metrolist_affordable_housing
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Node revisions (Metrolist Affordable Housing)'
+source:
+  plugin: d7_node_revision
+  node_type: metrolist_affordable_housing
+process:
+  nid: nid
+  vid: vid
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+  comment_node_metrolist_affordable_housing/0/status: comment
+  body:
+    plugin: get
+    source: body
+  field_mah_address:
+    plugin: get
+    source: field_mah_address
+  field_mah_contact:
+    plugin: get
+    source: field_mah_contact
+  field_mah_email:
+    plugin: get
+    source: field_mah_email
+  field_mah_household_income_limit:
+    plugin: get
+    source: field_mah_household_income_limit
+  field_mah_lottery_deadline: field_mah_lottery_deadline
+  field_mah_lottery_indicator:
+    plugin: get
+    source: field_mah_lottery_indicator
+  field_mah_lottery_type:
+    plugin: get
+    source: field_mah_lottery_type
+  field_mah_lottery_url: field_mah_lottery_url
+  field_mah_neighborhood:
+    plugin: get
+    source: field_mah_neighborhood
+  field_mah_not_active: field_mah_not_active
+  field_mah_outer_location:
+    plugin: get
+    source: field_mah_outer_location
+  field_mah_phone:
+    plugin: get
+    source: field_mah_phone
+  field_mah_publish_to_metrolist: field_mah_publish_to_metrolist
+  field_mah_zipcode:
+    plugin: get
+    source: field_mah_zipcode
+destination:
+  plugin: 'entity_revision:node'
+  default_bundle: metrolist_affordable_housing
+migration_dependencies:
+  required:
+    19: upgrade_d7_node_advpoll
+    20: upgrade_d7_node_article
+    21: upgrade_d7_node_change
+    22: upgrade_d7_node_department_profile
+    23: upgrade_d7_node_emergency_alert
+    24: upgrade_d7_node_event
+    25: upgrade_d7_node_how_to
+    26: upgrade_d7_node_landing_page
+    27: upgrade_d7_node_listing_page
+    28: upgrade_d7_node_metrolist_affordable_housing
+    29: upgrade_d7_node_person_profile
+    30: upgrade_d7_node_place_profile
+    31: upgrade_d7_node_post
+    32: upgrade_d7_node_procurement_advertisement
+    33: upgrade_d7_node_program_initiative_profile
+    34: upgrade_d7_node_public_notice
+    35: upgrade_d7_node_script_page
+    36: upgrade_d7_node_site_alert
+    37: upgrade_d7_node_status_item
+    38: upgrade_d7_node_tabbed_content
+    39: upgrade_d7_node_topic_page
+    40: upgrade_d7_node_transaction
+  optional: {  }

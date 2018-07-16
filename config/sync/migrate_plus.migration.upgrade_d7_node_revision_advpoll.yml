@@ -1,0 +1,84 @@
+uuid: a99a4d03-5501-4ec9-ad00-d6037c495e6f
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_revision_advpoll
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Node revisions (Advanced Poll)'
+source:
+  plugin: d7_node_revision
+  node_type: advpoll
+process:
+  nid: nid
+  vid: vid
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+  comment_node_advpoll/0/status: comment
+  body:
+    plugin: get
+    source: body
+  advpoll_choice: advpoll_choice
+  advpoll_max_choices:
+    plugin: get
+    source: advpoll_max_choices
+  advpoll_dates: advpoll_dates
+  advpoll_closed: advpoll_closed
+  advpoll_options: advpoll_options
+  advpoll_mode: advpoll_mode
+  advpoll_cookie_duration:
+    plugin: get
+    source: advpoll_cookie_duration
+  advpoll_results: advpoll_results
+  advpoll_behavior: advpoll_behavior
+  field_thanks:
+    plugin: get
+    source: field_thanks
+  field_vote_button_text:
+    plugin: get
+    source: field_vote_button_text
+destination:
+  plugin: 'entity_revision:node'
+  default_bundle: advpoll
+migration_dependencies:
+  required:
+    19: upgrade_d7_node_advpoll
+    20: upgrade_d7_node_article
+    21: upgrade_d7_node_change
+    22: upgrade_d7_node_department_profile
+    23: upgrade_d7_node_emergency_alert
+    24: upgrade_d7_node_event
+    25: upgrade_d7_node_how_to
+    26: upgrade_d7_node_landing_page
+    27: upgrade_d7_node_listing_page
+    28: upgrade_d7_node_metrolist_affordable_housing
+    29: upgrade_d7_node_person_profile
+    30: upgrade_d7_node_place_profile
+    31: upgrade_d7_node_post
+    32: upgrade_d7_node_procurement_advertisement
+    33: upgrade_d7_node_program_initiative_profile
+    34: upgrade_d7_node_public_notice
+    35: upgrade_d7_node_script_page
+    36: upgrade_d7_node_site_alert
+    37: upgrade_d7_node_status_item
+    38: upgrade_d7_node_tabbed_content
+    39: upgrade_d7_node_topic_page
+    40: upgrade_d7_node_transaction
+  optional: {  }

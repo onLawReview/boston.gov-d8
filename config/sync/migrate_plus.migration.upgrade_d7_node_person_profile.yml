@@ -1,0 +1,78 @@
+uuid: a1200446-a33f-431f-a5c4-9669100e7d05
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_person_profile
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Nodes (Person Profile)'
+source:
+  plugin: d7_node
+  node_type: person_profile
+process:
+  nid: tnid
+  vid: vid
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+  comment_node_person_profile/0/status: comment
+  field_address: field_address
+  field_contact:
+    plugin: get
+    source: field_contact
+  field_description:
+    plugin: get
+    source: field_description
+  field_email:
+    plugin: get
+    source: field_email
+  field_first_name:
+    plugin: get
+    source: field_first_name
+  field_last_name:
+    plugin: get
+    source: field_last_name
+  field_person_photo: field_person_photo
+  field_phone_number:
+    plugin: get
+    source: field_phone_number
+  field_political_party:
+    plugin: get
+    source: field_political_party
+  field_position_title:
+    plugin: get
+    source: field_position_title
+  field_preferred_contact: field_preferred_contact
+  field_profile_type:
+    plugin: get
+    source: field_profile_type
+  field_year_elected:
+    plugin: get
+    source: field_year_elected
+  field_components: field_components
+  field_sidebar_components: field_sidebar_components
+destination:
+  plugin: 'entity:node'
+  default_bundle: person_profile
+migration_dependencies:
+  required:
+    - upgrade_d7_user
+    - upgrade_d7_node_type
+  optional:
+    - upgrade_d7_field_instance

@@ -1,0 +1,80 @@
+uuid: 44978bbc-ed59-41da-945c-da5a7e0a8a7b
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_metrolist_affordable_housing
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Nodes (Metrolist Affordable Housing)'
+source:
+  plugin: d7_node
+  node_type: metrolist_affordable_housing
+process:
+  nid: tnid
+  vid: vid
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+  comment_node_metrolist_affordable_housing/0/status: comment
+  body:
+    plugin: get
+    source: body
+  field_mah_address:
+    plugin: get
+    source: field_mah_address
+  field_mah_contact:
+    plugin: get
+    source: field_mah_contact
+  field_mah_email:
+    plugin: get
+    source: field_mah_email
+  field_mah_household_income_limit:
+    plugin: get
+    source: field_mah_household_income_limit
+  field_mah_lottery_deadline: field_mah_lottery_deadline
+  field_mah_lottery_indicator:
+    plugin: get
+    source: field_mah_lottery_indicator
+  field_mah_lottery_type:
+    plugin: get
+    source: field_mah_lottery_type
+  field_mah_lottery_url: field_mah_lottery_url
+  field_mah_neighborhood:
+    plugin: get
+    source: field_mah_neighborhood
+  field_mah_not_active: field_mah_not_active
+  field_mah_outer_location:
+    plugin: get
+    source: field_mah_outer_location
+  field_mah_phone:
+    plugin: get
+    source: field_mah_phone
+  field_mah_publish_to_metrolist: field_mah_publish_to_metrolist
+  field_mah_zipcode:
+    plugin: get
+    source: field_mah_zipcode
+destination:
+  plugin: 'entity:node'
+  default_bundle: metrolist_affordable_housing
+migration_dependencies:
+  required:
+    - upgrade_d7_user
+    - upgrade_d7_node_type
+  optional:
+    - upgrade_d7_field_instance

@@ -1,0 +1,48 @@
+uuid: 13b064b0-5be8-47ee-9c03-37c3845ec8a5
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_status_item
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Nodes (Status Item)'
+source:
+  plugin: d7_node
+  node_type: status_item
+process:
+  nid: tnid
+  vid: vid
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+  comment_node_status_item/0/status: comment
+  field_icon: field_icon
+  field_messages: field_messages
+  field_title:
+    plugin: get
+    source: field_title
+destination:
+  plugin: 'entity:node'
+  default_bundle: status_item
+migration_dependencies:
+  required:
+    - upgrade_d7_user
+    - upgrade_d7_node_type
+  optional:
+    - upgrade_d7_field_instance

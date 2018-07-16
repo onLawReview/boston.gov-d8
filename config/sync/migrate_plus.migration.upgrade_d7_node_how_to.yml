@@ -1,0 +1,65 @@
+uuid: a444de12-9625-4f90-90f0-d955da7de157
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_how_to
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Nodes (How-To)'
+source:
+  plugin: d7_node
+  node_type: how_to
+process:
+  nid: tnid
+  vid: vid
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+  comment_node_how_to/0/status: comment
+  body:
+    plugin: get
+    source: body
+  field_contact:
+    plugin: get
+    source: field_contact
+  field_how_to_tabs: field_how_to_tabs
+  field_intro_image: field_intro_image
+  field_links: field_links
+  field_need_to_know:
+    plugin: get
+    source: field_need_to_know
+  field_payment_info:
+    plugin: get
+    source: field_payment_info
+  field_published_date: field_published_date
+  field_type_of_content:
+    plugin: get
+    source: field_type_of_content
+  field_updated_date: field_updated_date
+  field_components: field_components
+  field_sidebar_components: field_sidebar_components
+destination:
+  plugin: 'entity:node'
+  default_bundle: how_to
+migration_dependencies:
+  required:
+    - upgrade_d7_user
+    - upgrade_d7_node_type
+  optional:
+    - upgrade_d7_field_instance

@@ -1,0 +1,64 @@
+uuid: c28bb5a9-9fba-4855-9e8b-b5208758cfc3
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_program_initiative_profile
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Nodes (Program Initiative Profile)'
+source:
+  plugin: d7_node
+  node_type: program_initiative_profile
+process:
+  nid: tnid
+  vid: vid
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+  comment_node_program_initiative_profile/0/status: comment
+  body:
+    plugin: get
+    source: body
+  field_contacts:
+    plugin: get
+    source: field_contacts
+  field_intro_image: field_intro_image
+  field_intro_text:
+    plugin: get
+    source: field_intro_text
+  field_program_logo: field_program_logo
+  field_program_type:
+    plugin: get
+    source: field_program_type
+  field_published_date: field_published_date
+  field_type_of_content:
+    plugin: get
+    source: field_type_of_content
+  field_updated_date: field_updated_date
+  field_components: field_components
+  field_sidebar_components: field_sidebar_components
+destination:
+  plugin: 'entity:node'
+  default_bundle: program_initiative_profile
+migration_dependencies:
+  required:
+    - upgrade_d7_user
+    - upgrade_d7_node_type
+  optional:
+    - upgrade_d7_field_instance

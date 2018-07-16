@@ -1,0 +1,121 @@
+uuid: 2d27355a-78f4-426d-bd6c-9346ee3128c4
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_revision_public_notice
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Node revisions (Public Notice)'
+source:
+  plugin: d7_node_revision
+  node_type: public_notice
+process:
+  nid: nid
+  vid: vid
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+  comment_node_public_notice/0/status: comment
+  body:
+    plugin: get
+    source: body
+  field_address: field_address
+  field_cancelled: field_cancelled
+  field_city_hall: field_city_hall
+  field_contact:
+    plugin: get
+    source: field_contact
+  field_drawer: field_drawer
+  field_email:
+    plugin: get
+    source: field_email
+  field_event_contact:
+    plugin: get
+    source: field_event_contact
+  field_extra_info:
+    plugin: get
+    source: field_extra_info
+  field_featured: field_featured
+  field_intro_text:
+    plugin: get
+    source: field_intro_text
+  field_is_there_public_testimony: field_is_there_public_testimony
+  field_links: field_links
+  field_multiple_neighborhoods:
+    plugin: get
+    source: field_multiple_neighborhoods
+  field_people:
+    plugin: get
+    source: field_people
+  field_phone_number:
+    plugin: get
+    source: field_phone_number
+  field_place:
+    plugin: get
+    source: field_place
+  field_program_initiative:
+    plugin: get
+    source: field_program_initiative
+  field_public_notice_date: field_public_notice_date
+  field_related_content:
+    plugin: get
+    source: field_related_content
+  field_related_departments:
+    plugin: get
+    source: field_related_departments
+  field_related_events_notices:
+    plugin: get
+    source: field_related_events_notices
+  field_related_guides:
+    plugin: get
+    source: field_related_guides
+  field_related_posts:
+    plugin: get
+    source: field_related_posts
+  field_time: field_time
+  field_updated_date: field_updated_date
+  field_components: field_components
+destination:
+  plugin: 'entity_revision:node'
+  default_bundle: public_notice
+migration_dependencies:
+  required:
+    19: upgrade_d7_node_advpoll
+    20: upgrade_d7_node_article
+    21: upgrade_d7_node_change
+    22: upgrade_d7_node_department_profile
+    23: upgrade_d7_node_emergency_alert
+    24: upgrade_d7_node_event
+    25: upgrade_d7_node_how_to
+    26: upgrade_d7_node_landing_page
+    27: upgrade_d7_node_listing_page
+    28: upgrade_d7_node_metrolist_affordable_housing
+    29: upgrade_d7_node_person_profile
+    30: upgrade_d7_node_place_profile
+    31: upgrade_d7_node_post
+    32: upgrade_d7_node_procurement_advertisement
+    33: upgrade_d7_node_program_initiative_profile
+    34: upgrade_d7_node_public_notice
+    35: upgrade_d7_node_script_page
+    36: upgrade_d7_node_site_alert
+    37: upgrade_d7_node_status_item
+    38: upgrade_d7_node_tabbed_content
+    39: upgrade_d7_node_topic_page
+    40: upgrade_d7_node_transaction
+  optional: {  }
