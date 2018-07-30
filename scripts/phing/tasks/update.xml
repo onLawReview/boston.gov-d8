@@ -42,11 +42,14 @@
 <!---->
     <target name="update:config:updatedb"
             description="Update the database with any hook_updates etc.">
+        <stopwatch name="updatedb" action="start" description="Records elapsed time." category="debug" />
         <echo message="Updates new Drupal build (checks for module updates and database changes)." />
         <exec description="Update the database with any hook_updates etc."
               dir="${docroot}" command="${drush.cmd} updb --entity-updates -y" logoutput="true"/>
+        <stopwatch name="updatedb" action="lap" description="Records elapsed time." category="debug" />
         <exec description="Rebuild the user permissions"  logoutput="true"
               dir="${docroot}" command="${drush.cmd} eval 'node_access_rebuild()'"/>
+        <stopwatch name="updatedb" action="stop" description="Records elapsed time." category="debug" />
     </target>
 
     <target name="update:user:loginadmin"

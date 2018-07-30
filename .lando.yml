@@ -45,6 +45,7 @@ services:
         # Phing is then also referenced in composer.json to ensure it is loaded into the right
         # vendor folder for the project.
         "phing/phing": "2.*"
+        "symfony/stopwatch": "^4.1"
 
     run_as_root:
       - echo "\033[1;33m> Verify linux packages in appserver container...\033[0m"
