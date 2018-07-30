@@ -17,14 +17,12 @@
   <target name="setup:docker:drupal-local"
           description="Creates a drupal environment in docker for local development."
           depends="setup:drupal, setup:drupal:newdb, setup:drush:local-config, update:config:updatedb">
-    <stopwatch name="setup-local" action="start" />
     <phingcall target="build:info" description="display the welcome screen."/>
     <echo message="The admin account is: ${drupal.account.name} and password is ${drupal.account.password}" level="warning"/>
     <exec description="Login the admin user." output='${project.basedir}/setup/.uli'  logoutput="true"
             dir="${docroot}" command="${drush.cmd} uli"/>
     <exec description="Allow users outside the container access to the .uli file." logoutput="true"
             dir="${docroot}" command="chmod 777 ${project.basedir}/setup/.uli"/>
-    <stopwatch name="setup-local" action="stop" />
   </target>
 
   <!-- Define the build task used by travis. -->
