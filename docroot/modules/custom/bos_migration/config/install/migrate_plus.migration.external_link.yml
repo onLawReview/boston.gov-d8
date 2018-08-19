@@ -1,0 +1,32 @@
+id: external_link
+label: External Link Paragraph
+migration_group: bos
+migration_tags:
+  - 'Drupal 7'
+migration_group: bos
+label: 'External Link Paragraph'
+source:
+  plugin: csv
+  path: modules/custom/bos_migration/assets/csv/external_link.csv
+  header_row_count: 1
+  keys:
+    - id
+  column_names:
+    -
+      id: ID
+    -
+      external_link: 'External Link'
+    -
+      external_link_text: 'External Link Text'
+process:
+    field_external_link/title: external_link_text
+    field_external_link/uri: external_link
+    field_external_link/options:
+        plugin: default_value
+        default_value: 'a:0:{}'
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  default_bundle: external_link
+migration_dependencies:
+  required: {  }
+  optional: {  }

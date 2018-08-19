@@ -1,0 +1,11 @@
+name: Custom Migrations for Boston.gov
+type: module
+description: Defines custom migration.
+core: 8.x
+package: Custom
+dependencies:
+  - migrate
+  - migrate_plus
+  - migrate_source_csv
+  - migrate_drupal
+  - migrate_tools
